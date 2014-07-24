@@ -1,23 +1,14 @@
 # BASE SETUP
 
-# packages we need
 express = require 'express'
 app = express()
 bodyParser = require 'body-parser'
-mongoose = require 'mongoose'
-
-# connect to database
-# local
-dbURI = 'mongodb://localhost/todo' 
-
-# on the web
-# dbURI = process.env.MONGOLAB_URI ||process.env.MONGOHQ_URL
-mongoose.connect dbURI
 
 # CONFIGURE
 
 app.use bodyParser.urlencoded( {extended: true} )
 port = process.env.PORT || 8080
+db = require './config/db'
 
 # ROUTES
 
