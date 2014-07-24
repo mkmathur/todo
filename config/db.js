@@ -22,6 +22,4 @@
     return console.log('disconnected from db');
   });
 
-  require('./../models/task');
-
 }).call(this);
