@@ -42,9 +42,9 @@
 
   app.use(flash());
 
-  require('./routes/tasks')(app);
+  require('./routes/index')(app, passport);
 
-  require('./routes/user')(app, passport);
+  require('./routes/tasks')(app);
 
   app.listen(port);
 

@@ -31,8 +31,8 @@ app.use flash()
 
 # ROUTES
 
+require('./routes/index')(app, passport)
 require('./routes/tasks')(app)
-require('./routes/user')(app, passport)
 
 # START THE SERVER
 app.listen(port)

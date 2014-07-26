@@ -7,7 +7,7 @@
   User = require('./../models/user');
 
   module.exports = function(passport) {
-    var cb, strategy;
+    var login_cb, login_strategy, signup_cb, signup_strategy;
     passport.serializeUser(function(user, done) {
       return done(null, user.id);
     });
@@ -16,7 +16,7 @@
         return done(err, user);
       });
     });
-    cb = function(req, username, password, done) {
+    signup_cb = function(req, username, password, done) {
       return process.nextTick(function() {
         return User.findOne({
           'local.username': username
@@ -41,12 +41,30 @@
         });
       });
     };
-    strategy = new LocalStrategy({
-      usernameField: 'username',
-      passwordField: 'password',
+    signup_strategy = new LocalStrategy({
       passReqToCallback: true
-    }, cb);
-    return passport.use('local-signup', strategy);
+    }, signup_cb);
+    passport.use('local-signup', signup_strategy);
+    login_cb = function(req, username, password, done) {
+      return User.findOne({
+        'local.username': username
+      }, function(err, user) {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, req.flash('loginMessage', 'No user found.'));
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+        }
+        return done(null, user);
+      });
+    };
+    login_strategy = new LocalStrategy({
+      passReqToCallback: true
+    }, login_cb);
+    return passport.use('local-login', login_strategy);
   };
 
 }).call(this);
