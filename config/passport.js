@@ -16,20 +16,20 @@
         return done(err, user);
       });
     });
-    cb = function(req, email, password, done) {
+    cb = function(req, username, password, done) {
       return process.nextTick(function() {
         return User.findOne({
-          'local.email': email
+          'local.username': username
         }, function(err, user) {
           var newUser;
           if (err) {
             return done(err);
           }
           if (user) {
-            return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+            return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
           } else {
             newUser = new User();
-            newUser.local.email = email;
+            newUser.local.username = username;
             newUser.local.password = newUser.generateHash(password);
             return newUser.save(function(err) {
               if (err) {
@@ -42,7 +42,7 @@
       });
     };
     strategy = new LocalStrategy({
-      usernameField: 'email',
+      usernameField: 'username',
       passwordField: 'password',
       passReqToCallback: true
     }, cb);

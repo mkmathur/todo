@@ -10,10 +10,16 @@
     var router;
     router = express.Router();
     router.post('/signup', passport.authenticate('local-signup', {
-      successRedirect: '/success',
-      failureRedirect: '/failure',
+      successRedirect: '/user/success',
+      failureRedirect: '/user/failure',
       failureFlash: true
     }));
+    router.get('/success', function(req, res) {
+      return res.json('Success!');
+    });
+    router.get('/failure', function(req, res) {
+      return res.json('Failure');
+    });
     return app.use('/user', router);
   };
 

@@ -5,10 +5,18 @@ module.exports = (app, passport) ->
 	router = express.Router()
 
 	router.post('/signup', passport.authenticate('local-signup', {
-			successRedirect: '/success',
-			failureRedirect: '/failure',
+			successRedirect: '/user/success',
+			failureRedirect: '/user/failure',
 			failureFlash: true
 		}))
+
+	router.get('/success', (req, res) ->
+			res.json('Success!')
+		)
+
+	router.get('/failure', (req, res) ->
+			res.json('Failure')
+		)
 
 	app.use('/user', router)
 		

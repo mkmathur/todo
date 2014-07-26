@@ -11,15 +11,15 @@ module.exports = (passport) ->
 	# LOCAL SIGNUP
 	# we are using named strategies since we have one for login and one for signup
 
-	cb = (req, email, password, done) ->
+	cb = (req, username, password, done) ->
 		process.nextTick () ->
-			User.findOne({ 'local.email' : email}, (err, user) ->
+			User.findOne({ 'local.username' : username}, (err, user) ->
 					return done err if err
 					if user 
-						return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
+						return done(null, false, req.flash('signupMessage', 'That username is already taken.'))
 					else
 						newUser = new User()
-						newUser.local.email = email
+						newUser.local.username = username
 						newUser.local.password = newUser.generateHash password 
 						newUser.save (err) ->
 							throw err if err 
@@ -27,7 +27,7 @@ module.exports = (passport) ->
 				)
 
 	strategy = new LocalStrategy({
-			usernameField: 'email',
+			usernameField: 'username',
 			passwordField: 'password',
 			passReqToCallback: true
 		}, cb)
