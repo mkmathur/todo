@@ -6,23 +6,29 @@
 
   Task = require('./../models/Task');
 
-  module.exports = function(app) {
+  module.exports = function(app, mw) {
     var router;
     router = express.Router();
+    router.use(mw.requiresLogin);
     router.route('/').post(function(req, res) {
       var task;
       task = new Task();
       task.text = req.body.text;
+      task.userID = req.user._id;
       return task.save(function(err) {
         if (err) {
           res.send(err);
         }
         return res.json({
-          message: 'Task created! '
+          message: 'Task created! ',
+          text: task.text,
+          userID: task.userID
         });
       });
     }).get(function(req, res) {
-      return Task.find(function(err, tasks) {
+      return Task.find({
+        'userID': req.user._id
+      }, function(err, tasks) {
         if (err) {
           res.send(err);
         }

@@ -3,7 +3,8 @@ Schema = mongoose.Schema
 
 TaskSchema = new Schema {
 	text: String,
-	completed: Boolean
+	completed: Boolean,
+	userID: String
 }
 
 module.exports = mongoose.model('Task', TaskSchema)

@@ -17,6 +17,7 @@ session = require 'express-session'
 
 require './config/db'
 require('./config/passport')(passport)
+middleware = require('./config/middleware')
 
 # set up express application
 app.use morgan 'dev'
@@ -32,7 +33,7 @@ app.use flash()
 # ROUTES
 
 require('./routes/index')(app, passport)
-require('./routes/tasks')(app)
+require('./routes/tasks')(app, middleware)
 
 # START THE SERVER
 app.listen(port)
