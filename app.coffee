@@ -3,6 +3,7 @@
 express = require 'express'
 app = express()
 port = process.env.PORT || 8080
+path = require 'path'
 
 mongoose = require 'mongoose'
 passport = require 'passport'
@@ -24,6 +25,10 @@ app.use morgan 'dev'
 app.use cookieParser()
 app.use bodyParser()
 
+# view engine setup
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
+
 # required for passport
 app.use session { secret: 'mysecret' }
 app.use passport.initialize()
@@ -32,7 +37,8 @@ app.use flash()
 
 # ROUTES
 
-require('./routes/index')(app, passport)
+require('./routes/index')(app)
+require('./routes/user')(app, passport)
 require('./routes/tasks')(app, middleware)
 
 # START THE SERVER
