@@ -32,4 +32,48 @@
     });
   };
 
+  exports.find = function(req, res) {
+    return Task.findOne({
+      '_id': req.params.task_id,
+      'userID': req.user._id
+    }, function(err, task) {
+      if (err) {
+        res.send(err);
+      }
+      return res.json(task);
+    });
+  };
+
+  exports.update = function(req, res) {
+    return Task.findOne({
+      '_id': req.params.task_id,
+      'userID': req.user._id
+    }, function(err, task) {
+      if (err) {
+        res.send(err);
+      }
+      task.text = req.body.text;
+      return task.save(function(err) {
+        if (err) {
+          res.send(err);
+        }
+        return res.json(task);
+      });
+    });
+  };
+
+  exports["delete"] = function(req, res) {
+    return Task.remove({
+      '_id': req.params.task_id,
+      'userID': req.user._id
+    }, function(err, task) {
+      if (err) {
+        res.send(err);
+      }
+      return res.json({
+        message: 'Task deleted'
+      });
+    });
+  };
+
 }).call(this);

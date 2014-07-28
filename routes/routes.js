@@ -17,7 +17,8 @@
     app.route('/signup').post(user.signup(passport));
     app.route('/login').post(user.login(passport));
     app.route('/logout').get(user.logout);
-    return app.route('/api/tasks').all(middleware.requiresLogin).post(tasks.add).get(tasks.all);
+    app.route('/api/tasks').all(middleware.requiresLogin).post(tasks.add).get(tasks.all);
+    return app.route('/api/tasks/:task_id').all(middleware.requiresLogin).get(tasks.find).put(tasks.update)["delete"](tasks["delete"]);
   };
 
 }).call(this);
