@@ -37,7 +37,7 @@ app.use flash()
 
 # ROUTES
 
-require('./routes/routes')(app, middleware, passport)
+require('./routes/routes')(app, passport)
 
 # START THE SERVER
 app.listen(port)

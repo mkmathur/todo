@@ -50,7 +50,7 @@
 
   app.use(flash());
 
-  require('./routes/routes')(app, middleware, passport);
+  require('./routes/routes')(app, passport);
 
   app.listen(port);
 

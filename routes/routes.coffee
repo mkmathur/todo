@@ -1,8 +1,9 @@
-module.exports = (app, middleware, passport) ->
+index = require './index' 
+user = require './user' 
+tasks = require './tasks' 
+middleware = require './../config/middleware'
 
-	index = require './index' 
-	user = require './user' 
-	tasks = require './tasks' 
+module.exports = (app, passport) ->
 
 	# views
 	app.route('/').get index.home
