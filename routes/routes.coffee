@@ -7,19 +7,15 @@ middleware = require './../config/middleware'
 
 module.exports = (app, passport) ->
 
-	# views
+	# users
 	app.route('/')
 		.get index.home
 	app.route('/login')
 		.get index.login
+		.post user.login passport
 	app.route('/signup')
 		.get index.signup
-
-	# users
-	app.route('/signup')
 		.post user.signup passport
-	app.route('/login')
-		.post user.login passport
 	app.route('/logout')
 		.get user.logout
 
@@ -28,11 +24,9 @@ module.exports = (app, passport) ->
 	api.use middleware.requiresLogin
 
 	api.route('/tasks')
-		.all middleware.requiresLogin
 		.post tasks.add
 		.get tasks.all
 	api.route('/tasks/:task_id')
-		.all middleware.requiresLogin
 		.get tasks.find
 		.put tasks.update
 		.delete tasks.delete
