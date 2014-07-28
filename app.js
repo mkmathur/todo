@@ -24,11 +24,11 @@
 
   session = require('express-session');
 
+  middleware = require('./config/middleware');
+
   require('./config/db');
 
   require('./config/passport')(passport);
-
-  middleware = require('./config/middleware');
 
   app.use(morgan('dev'));
 
@@ -50,11 +50,7 @@
 
   app.use(flash());
 
-  require('./routes/index')(app);
-
-  require('./routes/user')(app, passport);
-
-  require('./routes/tasks')(app, middleware);
+  require('./routes/routes')(app, middleware, passport);
 
   app.listen(port);
 

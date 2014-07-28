@@ -1,12 +1,16 @@
 express = require 'express'
 
-module.exports = (app, passport) ->
-	router = express.Router()
-
-	router.get('/', (req, res) ->
-		res.render('index.jade', {
+exports.home = (req, res) ->
+	res.render('index.jade', {
 			title: 'Todo'
 		})
-	)
 
-	app.use('/', router)
+exports.login = (req, res) ->
+	res.render('login.jade', {
+			title: 'Login'
+		})
+
+exports.signup = (req, res) ->
+	res.render('signup.jade', {
+			title: 'Sign Up'
+		})

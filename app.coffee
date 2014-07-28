@@ -8,17 +8,17 @@ path = require 'path'
 mongoose = require 'mongoose'
 passport = require 'passport'
 flash = require 'connect-flash'
-
 morgan = require 'morgan'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 session = require 'express-session'
 
+middleware = require('./config/middleware')
+
 # CONFIGURE
 
 require './config/db'
 require('./config/passport')(passport)
-middleware = require('./config/middleware')
 
 # set up express application
 app.use morgan 'dev'
@@ -37,9 +37,7 @@ app.use flash()
 
 # ROUTES
 
-require('./routes/index')(app)
-require('./routes/user')(app, passport)
-require('./routes/tasks')(app, middleware)
+require('./routes/routes')(app, middleware, passport)
 
 # START THE SERVER
 app.listen(port)

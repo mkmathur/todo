@@ -1,33 +1,22 @@
-express = require 'express'
-User = require './../models/user'
-
-module.exports = (app, passport) ->
-	router = express.Router()
-
-	router.post('/signup', passport.authenticate('local-signup', {
-			successRedirect: '/success',
-			failureRedirect: '/failure',
+exports.signup = (passport) ->
+	passport.authenticate('local-signup', {
+			successRedirect: '/'
+			failureRedirect: '/signup'
 			failureFlash: true
-		}))
+		})
 
-	router.post('/login', passport.authenticate('local-login', {
-			successRedirect: '/success',
-			failureRedirect: '/failure',
+exports.login = (passport) ->
+	passport.authenticate('local-login', {
+			successRedirect: '/'
+			failureRedirect: '/login'
 			failureFlash: true
-		}))
+		})
 
-	router.get('/logout', (req, res) ->
-			req.logout()
-			res.redirect('/')
-		)
+exports.logout = (req, res) ->
+	req.logout()
+	res.redirect('/')
 
-	router.get('/success', (req, res) ->
-			res.json('Success!')
-		)
 
-	router.get('/failure', (req, res) ->
-			res.json('Failure')
-		)
 
-	app.use('/', router)
+
 		

@@ -4,15 +4,22 @@
 
   express = require('express');
 
-  module.exports = function(app, passport) {
-    var router;
-    router = express.Router();
-    router.get('/', function(req, res) {
-      return res.render('index.jade', {
-        title: 'Todo'
-      });
+  exports.home = function(req, res) {
+    return res.render('index.jade', {
+      title: 'Todo'
     });
-    return app.use('/', router);
+  };
+
+  exports.login = function(req, res) {
+    return res.render('login.jade', {
+      title: 'Login'
+    });
+  };
+
+  exports.signup = function(req, res) {
+    return res.render('signup.jade', {
+      title: 'Sign Up'
+    });
   };
 
 }).call(this);
