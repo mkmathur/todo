@@ -40,6 +40,8 @@
 
   app.set('view engine', 'jade');
 
+  app.use(express["static"](__dirname + '/public'));
+
   app.use(session({
     secret: 'mysecret'
   }));

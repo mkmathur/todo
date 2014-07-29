@@ -6,19 +6,22 @@
 
   exports.home = function(req, res) {
     return res.render('index.jade', {
-      title: 'Todo'
+      title: 'Todo',
+      styles: ['css/jumbotron-narrow.css']
     });
   };
 
   exports.login = function(req, res) {
     return res.render('login.jade', {
-      title: 'Login'
+      title: 'Login',
+      styles: []
     });
   };
 
   exports.signup = function(req, res) {
     return res.render('signup.jade', {
-      title: 'Sign Up'
+      title: 'Sign Up',
+      styles: []
     });
   };
 

@@ -28,6 +28,7 @@ app.use bodyParser()
 # view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'jade')
+app.use(express.static(__dirname + '/public'))
 
 # required for passport
 app.use session { secret: 'mysecret' }
