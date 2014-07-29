@@ -1,4 +1,4 @@
-Task = require './../models/Task'
+Task = require './../models/task.js'
 
 exports.add = (req, res) ->
 	task = new Task()

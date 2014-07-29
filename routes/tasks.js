@@ -2,7 +2,7 @@
 (function() {
   var Task;
 
-  Task = require('./../models/Task');
+  Task = require('./../models/task');
 
   exports.add = function(req, res) {
     var task;

@@ -4,7 +4,7 @@
 
   mongoose = require('mongoose');
 
-  dbURI = 'mongodb://localhost/todo';
+  dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/todo';
 
   mongoose.connect(dbURI);
 
