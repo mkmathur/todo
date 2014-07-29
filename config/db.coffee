@@ -1,10 +1,6 @@
 mongoose = require 'mongoose'
 
-# local database
-dbURI = 'mongodb://localhost/todo'
-
-# heroku database
-# dbURI = process.env.MONGOLAB_URI ||process.env.MONGOHQ_URL 
+dbURI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/todo'
 
 mongoose.connect dbURI
 db = mongoose.connection
