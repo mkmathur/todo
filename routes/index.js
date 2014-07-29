@@ -7,7 +7,7 @@
   exports.home = function(req, res) {
     return res.render('index.jade', {
       title: 'Todo',
-      styles: ['css/jumbotron-narrow.css']
+      styles: ['css/landing.css']
     });
   };
 

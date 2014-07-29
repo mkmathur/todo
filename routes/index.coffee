@@ -3,7 +3,7 @@ express = require 'express'
 exports.home = (req, res) ->
 	res.render('index.jade', {
 			title: 'Todo',
-			styles: ['css/jumbotron-narrow.css']
+			styles: ['css/landing.css']
 		})
 
 exports.login = (req, res) ->
