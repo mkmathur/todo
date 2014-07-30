@@ -14,9 +14,9 @@
 
   module.exports = function(app, passport) {
     var api;
-    app.route('/').get(index.home);
-    app.route('/login').get(index.login).post(user.login(passport));
-    app.route('/signup').get(index.signup).post(user.signup(passport));
+    app.route('/home').get(index.home);
+    app.route('/login').post(user.login(passport));
+    app.route('/signup').post(user.signup(passport));
     app.route('/logout').get(user.logout);
     api = express.Router();
     api.use(middleware.requiresLogin);

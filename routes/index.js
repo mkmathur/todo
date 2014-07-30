@@ -11,18 +11,4 @@
     });
   };
 
-  exports.login = function(req, res) {
-    return res.render('login.jade', {
-      title: 'Login',
-      styles: []
-    });
-  };
-
-  exports.signup = function(req, res) {
-    return res.render('signup.jade', {
-      title: 'Sign Up',
-      styles: []
-    });
-  };
-
 }).call(this);

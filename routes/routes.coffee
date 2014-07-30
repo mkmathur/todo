@@ -8,13 +8,11 @@ middleware = require './../config/middleware'
 module.exports = (app, passport) ->
 
 	# users
-	app.route('/')
+	app.route('/home')
 		.get index.home
 	app.route('/login')
-		.get index.login
 		.post user.login passport
 	app.route('/signup')
-		.get index.signup
 		.post user.signup passport
 	app.route('/logout')
 		.get user.logout
