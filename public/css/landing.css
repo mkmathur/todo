@@ -1,7 +1,7 @@
 body {
     padding-bottom: 20px;
     padding-top: 20px;
-    background: url("http://subtlepatterns.com/patterns/congruent_pentagon.png") repeat scroll 0% 0% transparent;
+    background: url("http://subtlepatterns.com/patterns/congruent_outline.png") repeat scroll 0% 0% transparent;
 }
 .header, .marketing, .footer {
     padding-left: 15px;
@@ -33,7 +33,6 @@ body {
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
     background-color: white;
-    color: #19763e;
 }
 .jumbotron .btn {
     font-size: 21px;
