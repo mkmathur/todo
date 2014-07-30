@@ -1,12 +1,12 @@
 exports.signup = (passport) ->
 	passport.authenticate('local-signup', {
-			successRedirect: '/tasks'
+			successRedirect: '/'
 			failureFlash: true
 		})
 
 exports.login = (passport) ->
 	passport.authenticate('local-login', {
-			successRedirect: '/tasks'
+			successRedirect: '/'
 			failureFlash: true
 		})
 

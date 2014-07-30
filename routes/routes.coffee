@@ -6,12 +6,7 @@ tasks = require './tasks'
 middleware = require './../config/middleware'
 
 module.exports = (app, passport) ->
-
 	app.route('/')
-		.get (req, res) ->
-			res.redirect '/tasks' if req.isAuthenticated()
-			res.redirect '/home'
-	app.route('/tasks')
 		.all middleware.requiresLogin
 		.get view.tasks
 	app.route('/home')

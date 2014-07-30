@@ -2,14 +2,14 @@
 (function() {
   exports.signup = function(passport) {
     return passport.authenticate('local-signup', {
-      successRedirect: '/tasks',
+      successRedirect: '/',
       failureFlash: true
     });
   };
 
   exports.login = function(passport) {
     return passport.authenticate('local-login', {
-      successRedirect: '/tasks',
+      successRedirect: '/',
       failureFlash: true
     });
   };
