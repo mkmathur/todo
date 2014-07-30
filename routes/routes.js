@@ -14,7 +14,13 @@
 
   module.exports = function(app, passport) {
     var api;
-    app.route('/tasks').get(view.tasks);
+    app.route('/').get(function(req, res) {
+      if (req.isAuthenticated()) {
+        res.redirect('/tasks');
+      }
+      return res.redirect('/home');
+    });
+    app.route('/tasks').all(middleware.requiresLogin).get(view.tasks);
     app.route('/home').get(view.home);
     app.route('/login').post(user.login(passport));
     app.route('/signup').post(user.signup(passport));

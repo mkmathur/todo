@@ -7,14 +7,14 @@
 					span(class="sr-only") Close
 				h4.modal-title#label Please Log In
 			.modal-body
-				form.form-horizontal(role="form")
+				form.form-horizontal(role="form", action="/login", method="post")
 					.form-group
 						label.col-sm-2.control-label(for="username") Username 
 						.col-sm-10
-							input.form-control#email(type='text')
+							input.form-control#email(type='text', name='username')
 					.form-group
 						label.col-sm-2.control-label(for="password") Password 
 						.col-sm-10
-							input.form-control#password(type='text')
+							input.form-control#password(type='text', name='password')
+					input.btn.btn-primary(type='submit') 
 			.modal-footer
-				button.btn.btn-primary(type='button') Log In

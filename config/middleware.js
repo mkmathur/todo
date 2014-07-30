@@ -4,10 +4,7 @@
     if (req.isAuthenticated()) {
       return next();
     } else {
-      return res.json({
-        'response': 'FAIL',
-        'errors': ['Sign in required.']
-      });
+      return res.redirect('/');
     }
   };
 

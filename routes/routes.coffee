@@ -7,8 +7,12 @@ middleware = require './../config/middleware'
 
 module.exports = (app, passport) ->
 
-	# users
+	app.route('/')
+		.get (req, res) ->
+			res.redirect '/tasks' if req.isAuthenticated()
+			res.redirect '/home'
 	app.route('/tasks')
+		.all middleware.requiresLogin
 		.get view.tasks
 	app.route('/home')
 		.get view.home
@@ -19,10 +23,8 @@ module.exports = (app, passport) ->
 	app.route('/logout')
 		.get user.logout
 
-	# tasks
 	api = express.Router()
 	api.use middleware.requiresLogin
-
 	api.route('/tasks')
 		.post tasks.add
 		.get tasks.all
@@ -30,5 +32,4 @@ module.exports = (app, passport) ->
 		.get tasks.find
 		.put tasks.update
 		.delete tasks.delete
-
 	app.use('/api', api)
