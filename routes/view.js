@@ -5,9 +5,16 @@
   express = require('express');
 
   exports.home = function(req, res) {
-    return res.render('index.jade', {
+    return res.render('home.jade', {
       title: 'Todo',
       styles: ['css/landing.css']
+    });
+  };
+
+  exports.tasks = function(req, res) {
+    return res.render('tasks.jade', {
+      title: 'Todo',
+      styles: ['css/main.css']
     });
   };
 

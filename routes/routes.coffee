@@ -1,6 +1,6 @@
 express = require 'express'
 
-index = require './index' 
+view = require './view' 
 user = require './user' 
 tasks = require './tasks' 
 middleware = require './../config/middleware'
@@ -8,8 +8,10 @@ middleware = require './../config/middleware'
 module.exports = (app, passport) ->
 
 	# users
+	app.route('/tasks')
+		.get view.tasks
 	app.route('/home')
-		.get index.home
+		.get view.home
 	app.route('/login')
 		.post user.login passport
 	app.route('/signup')
