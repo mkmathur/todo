@@ -5,6 +5,8 @@ block content
 		h1 Todo
 		p.lead Simple to-do list app
 		p
-			a.btn.btn-lg.btn-success(role='button') Sign Up
+			a.btn.btn-lg.btn-success(role='button', data-toggle='modal', data-target='#signup') Sign Up
 		p 
-			a.btn.btn-lg.btn-success(role='button') Log In
+			a.btn.btn-lg.btn-success(role='button', data-toggle='modal', data-target='#login') Log In
+	.modal.fade#signup
+	.modal.fade#login

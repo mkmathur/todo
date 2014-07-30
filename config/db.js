@@ -15,7 +15,7 @@
   });
 
   db.once('open', function() {
-    return console.log('connected to db');
+    return console.log('connected to db at ' + dbURI);
   });
 
   db.on('disconnected', function() {
