@@ -24,11 +24,11 @@
 
   session = require('express-session');
 
-  middleware = require('./config/middleware');
-
   require('./config/db');
 
   require('./config/passport')(passport);
+
+  middleware = require('./config/middleware');
 
   app.use(morgan('dev'));
 

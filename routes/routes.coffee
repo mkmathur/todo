@@ -6,24 +6,24 @@ tasks = require './tasks'
 middleware = require './../config/middleware'
 
 module.exports = (app, passport) ->
-	app.route('/')
+	app.route '/'
 		.all middleware.requiresLogin
 		.get view.tasks
-	app.route('/home')
+	app.route '/home'
 		.get view.home
-	app.route('/login')
+	app.route '/login'
 		.post user.login passport
-	app.route('/signup')
+	app.route '/signup'
 		.post user.signup passport
-	app.route('/logout')
+	app.route '/logout'
 		.get user.logout
 
 	api = express.Router()
 	api.use middleware.requiresLogin
-	api.route('/tasks')
+	api.route '/tasks'
 		.post tasks.add
 		.get tasks.all
-	api.route('/tasks/:task_id')
+	api.route '/tasks/:task_id'
 		.get tasks.find
 		.put tasks.update
 		.delete tasks.delete

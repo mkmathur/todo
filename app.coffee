@@ -3,8 +3,9 @@
 express = require 'express'
 app = express()
 port = process.env.PORT || 8080
-path = require 'path'
 
+# DEPENDENCIES
+path = require 'path'
 mongoose = require 'mongoose'
 passport = require 'passport'
 flash = require 'connect-flash'
@@ -13,12 +14,11 @@ cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 session = require 'express-session'
 
-middleware = require('./config/middleware')
-
 # CONFIGURE
 
 require './config/db'
 require('./config/passport')(passport)
+middleware = require('./config/middleware')
 
 # set up express application
 app.use morgan 'dev'

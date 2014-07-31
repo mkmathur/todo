@@ -3,6 +3,7 @@
   exports.signup = function(passport) {
     return passport.authenticate('local-signup', {
       successRedirect: '/',
+      failureRedirect: '/home',
       failureFlash: true
     });
   };
@@ -10,6 +11,7 @@
   exports.login = function(passport) {
     return passport.authenticate('local-login', {
       successRedirect: '/',
+      failureRedirect: '/home',
       failureFlash: true
     });
   };
