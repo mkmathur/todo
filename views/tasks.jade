@@ -3,5 +3,6 @@ extends layout
 block content
 	.container
 		.container-inner
-			h1 Starter Template 
-			p.lead Use this to create any page
+			h1 Welcome! 
+			form(role='form' method='get' action='/logout')
+				button.btn.btn-primary(type='submit') Logout

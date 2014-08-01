@@ -5,16 +5,16 @@
 				button(type="button" class="close" data-dismiss="modal")
 					span(aria-hidden="true") x
 					span(class="sr-only") Close
-				h4.modal-title#label Please Log In
-			.modal-body
-				form.form-horizontal(role="form", action="/login", method="post")
+				h4.modal-title Please Log In
+			form.form-horizontal(role="form" method="post" action="/login")
+				.modal-body
 					.form-group
 						label.col-sm-2.control-label(for="username") Username 
 						.col-sm-10
-							input.form-control#email(type='text', name='username')
+							input.form-control(type='text', name='username')
 					.form-group
 						label.col-sm-2.control-label(for="password") Password 
 						.col-sm-10
-							input.form-control#password(type='password', name='password')
-					input.btn.btn-primary(type='submit') 
-			.modal-footer
+							input.form-control(type='password', name='password')
+				.modal-footer
+					button.btn.btn-primary(type='submit') Log In
