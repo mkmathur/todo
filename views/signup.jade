@@ -6,7 +6,7 @@
 					span(aria-hidden="true") x
 					span(class="sr-only") Close
 				h4.modal-title Please Sign Up
-			form.form-horizontal(role="form" method="post" action="/signup")
+			form.form-horizontal#signupForm(role="form" method="post" action="/signup")
 				.modal-body
 					.form-group
 						label.col-sm-4.control-label(for="username") Username 
@@ -19,6 +19,6 @@
 					.form-group
 						label.col-sm-4.control-label(for="password") Confirm Password 
 						.col-sm-8
-							input.form-control(type='password')
+							input.form-control(type='password' name='confirm')
 				.modal-footer
 					button.btn.btn-primary(type='submit') Sign Up
