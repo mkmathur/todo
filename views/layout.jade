@@ -13,5 +13,7 @@ html
 			block content
 		script(type='text/javascript', src='jquery-1.11.1.min.js')
 		script(type='text/javascript', src='bootstrap/js/bootstrap.min.js')
+		- each script in javascripts
+			script(type='text/javascript' src= script)
 
 

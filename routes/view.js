@@ -7,14 +7,16 @@
   exports.home = function(req, res) {
     return res.render('home.jade', {
       title: 'Todo',
-      styles: ['css/landing.css']
+      styles: ['css/landing.css', 'bootstrap-validator/dist/css/bootstrapValidator.min.css'],
+      javascripts: ['bootstrap-validator/dist/js/bootstrapValidator.min.js', 'validate.js']
     });
   };
 
   exports.tasks = function(req, res) {
     return res.render('tasks.jade', {
       title: 'Todo',
-      styles: ['css/main.css']
+      styles: ['css/main.css'],
+      javascripts: []
     });
   };
 
